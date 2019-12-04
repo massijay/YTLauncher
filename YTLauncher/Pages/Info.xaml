@@ -1,0 +1,132 @@
+﻿<Page
+    x:Class="YTLauncher.Pages.Info"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YTLauncher.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:appmodel="using:Windows.ApplicationModel"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="48" Background="Red">
+            <TextBlock
+                Name="InfoPageTitleTextBlock"
+                x:Uid="/Resources/InfoPageTitleTextBlock"
+                Text="about" Foreground="White" 
+                VerticalAlignment="Center" 
+                FontWeight="Bold" 
+                Margin="20,0,0,0"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- YTLauncher-->
+                <Ellipse Grid.Row="0"
+                     Grid.Column="0"
+                     Height="100"
+                     Width="100"
+                     Fill="Red"/>
+                <Ellipse Name="IconEllipse"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Height="100"
+                     Width="100"
+                     Stretch="UniformToFill"
+                     RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <CompositeTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </Ellipse.RenderTransform>
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="ms-appx:///Assets/Square150x150Logo.png" >
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <StackPanel Orientation="Vertical"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        VerticalAlignment="Center" >
+                    <TextBlock Text="{x:Bind appmodel:Package.Current.DisplayName}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                    <TextBlock Name="VersionTextBlock" Text="version"/>
+                    <TextBlock Name="AuthorTextBlock" Text="author"/>
+                </StackPanel>
+                
+                <!-- WBI-->
+                <Ellipse Grid.Row="2"
+                     Grid.Column="0"
+                     Height="75"
+                     Width="75"
+                     Fill="#238e9a"/>
+                <Ellipse Name="WBIEllipse"
+                     Grid.Row="2"
+                     Grid.Column="0"
+                     Height="75"
+                     Width="75"
+                     Stretch="UniformToFill"
+                     RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <CompositeTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </Ellipse.RenderTransform>
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="ms-appx:///Assets/WBILogo.png" >
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <StackPanel Orientation="Vertical"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        VerticalAlignment="Center">
+                    <TextBlock Text="visit"
+                           x:Uid="/Resources/VisitTextBlock"/>
+                    <HyperlinkButton Name="VisitButton"
+                                 Content="WindowsBlogItalia.com"
+                                 Click="VisitButton_Click"/>
+                </StackPanel>
+                
+                <!-- Mail-->
+                <Ellipse Grid.Row="4"
+                     Grid.Column="0"
+                     Height="75"
+                     Width="75"
+                     Fill="#1673ba"/>
+                <Ellipse Name="FeedbackEllipse"
+                     Grid.Row="4"
+                     Grid.Column="0"
+                     Height="75"
+                     Width="75"
+                     Stretch="UniformToFill"
+                     RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <CompositeTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </Ellipse.RenderTransform>
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="ms-appx:///Assets/HxMailMediumTile.png" >
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Button Grid.Row="4"
+                    Grid.Column="2"
+                    Name="FeedbackButton"
+                    Content="feedback"
+                    x:Uid="/Resources/FeedbackButton"
+                    Click="FeedbackButton_Click" />
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
